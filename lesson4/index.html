@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-<div class="counter"> 
+    <title>Лото</title>
 
-    <h1 >Счетчик чисел</h1>
-    <h2 id="number">0</h1>
-        <br><br>
-        <button onclick="plus()">Увеличить</button>
-        <button onclick="min()">Уменьшить</button>
-        <button onclick="reset()">Сбросить</button>
-        <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Лото</h1>
+
+        <div id="numbers"></div>
+
+        <button id="generate">Сгенерировать</button>
     </div>
-    </body>
+
+
+
+    <!-- <div class="counter"> 
+
+        <h1 >Счетчик чисел</h1>
+        <h2 id="number">0</h1>
+            <br><br>
+            <button onclick="plus()">Увеличить</button>
+            <button onclick="min()">Уменьшить</button>
+            <button onclick="reset()">Сбросить</button>
+            <script src="index.js"></script>
+        </div>  -->
+
+    <script src="index.js"></script>
+</body>
 </html>
