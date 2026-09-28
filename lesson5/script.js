@@ -1,65 +1,49 @@
-const users = [
-    { login: "aliya",   
-      password: "1111",  
-      name: "Алия" },
+let users = [
+  {
+      login: "aliia",
+      password: "1234",
+      name: "Aliia"
+  },
+  {
+      login: "admin",
+      password: "admin",
+      name: "Администратор"
+  },
+  {
+      login: "student",
+      password: "1111",
+      name: "Студент"
+  },
+  {
+      login: "user",
+      password: "2222",
+      name: "Пользователь"
+  },
+  {
+      login: "test",
+      password: "0000",
+      name: "Тестовый пользователь"
+  }
+];
 
-    { login: "ais",  
-      password: "2222",   
-      name: "Айс" },
+let button = document.getElementById("loginButton");
+let message = document.getElementById("message");
 
-    { login: "saule",   
-      password: "3333",   
-      name: "Сауле" },
+button.addEventListener("click", function() {
 
-    { login: "kuba",   
-      password: "4444",   
-      name: "Куба" },
+  let login = document.getElementById("login").value;
+  let password = document.getElementById("password").value;
 
-    { login: "sake",  
-      password: "5555",   
-      name: "Саке" },
-
-    { login: "bema",   
-      password: "6666",   
-      name: "Бема" },
-
-    { login: "alym", 
-      password: "7777",   
-      name: "Алым" },
-
-    { login: "admin",  
-      password: "admin1", 
-      name: "Администратор" }
-  ];
-  
-  const form = document.getElementById("form");
-  const msg = document.getElementById("msg");
-  
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const login = document.getElementById("login").value.trim();
-    const password = document.getElementById("password").value;
-  
-    const user = users.find(u => u.login === login && u.password === password);
-  
-    if (user) {
-      msg.className = "ok";
-      msg.textContent = `Добро пожаловать, ${user.name}! Вы успешно авторизованы.`;
-    } else {
-      msg.className = "err";
-      msg.textContent = "Ошибка: неверный логин или пароль.";
-    }
-  });
-  
-
-  const hints = document.getElementById("hints");
-  users.forEach(u => {
-    const li = document.createElement("li");
-    li.innerHTML = "<code></code>";
-    li.firstChild.textContent = `${u.login} / ${u.password}`;
-    hints.appendChild(li);
+  let user = users.find(function(user) {
+      return user.login === login && user.password === password;
   });
 
+  if (user) {
+      message.textContent = "Добро пожаловать, " + user.name + "!";
+  } else {
+      message.textContent = "Неверный логин или пароль";
+  }
+});
 
 //   Написать функцию которая считает сумму параметров переданных в функцию. Передавать можно сколько угодно параметров. Например: sumAll(2,5,6,7) -> 20; sumAll(1,2,3,4,5,6,7,8,9,10) -> 55
 
