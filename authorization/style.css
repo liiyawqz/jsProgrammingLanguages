@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f3f9;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .card {
+    background: white;
+    width: 300px;
+    padding: 30px;
+    border-radius: 15px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #5b5bd6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #message {
+    text-align: center;
+  }
