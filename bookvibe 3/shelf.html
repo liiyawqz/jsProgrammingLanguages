@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Моя полка — Книжный Вайб</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@500;700&display=swap&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Хедер -->
+  <header class="top">
+    <div class="wrap">
+      <div class="bar">
+        <a class="logo" href="index.html">Книжный Вайб</a>
+
+        <nav aria-label="Основное меню">
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="genres.html">Жанры</a></li>
+            <li><a href="authors.html">Авторы</a></li>
+            <li><a href="reviews.html">Рецензии</a></li>
+            <li><a href="collections.html">Подборки</a></li>
+            <li><a href="recommendations.html">Рекомендации</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="bar2">
+        <form class="search" role="search" action="catalog.html" method="get" data-js="search-form">
+          <svg class="ico-s mag" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-3.5-3.5"/>
+          </svg>
+          <input type="search" name="q" placeholder="Название, автор, жанр" aria-label="Поиск по магазину" data-js="search" autocomplete="off">
+          <span class="key" aria-hidden="true">/</span>
+          <div data-js="search-suggest" hidden></div>
+        </form>
+
+        <a class="act" href="shelf.html" aria-current="page">
+          <svg class="ico-s" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="4" height="16" rx="1"/>
+            <rect x="10" y="4" width="4" height="16" rx="1"/>
+            <path d="m16 6 4 13"/>
+          </svg>
+          <span class="lbl">Моя полка</span>
+          <span class="badge" data-js="shelf-count">0</span>
+        </a>
+
+        <a class="act main" href="cart.html">
+          <svg class="ico-s" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8Z"/>
+            <path d="M9 8a3 3 0 0 1 6 0"/>
+          </svg>
+          <span class="lbl">Корзина</span>
+          <span class="badge" data-js="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Основной контент -->
+  <main>
+    <div class="wrap">
+      
+      <div class="head">
+        <h1>Моя полка</h1>
+      </div>
+
+      <!-- Переключение статусов полки -->
+      <div class="tabs">
+        <button class="chip on" data-js="shelf-tab" data-value="read">Прочитано</button>
+        <button class="chip" data-js="shelf-tab" data-value="want">Хочу прочитать</button>
+        <button class="chip" data-js="shelf-tab" data-value="now">Читаю</button>
+      </div>
+
+      <!-- Список книг на полке -->
+      <div class="list" data-js="read-list">
+        
+        <article class="panel item" data-book-id="2">
+          <div class="cover g2">Дюна</div>
+          <div>
+            <h3>Дюна</h3>
+            <p class="by">Фрэнк Герберт</p>
+          </div>
+          <div class="rate-input" data-js="rate">
+            <button type="button" class="on" data-value="1" aria-label="1">★</button>
+            <button type="button" class="on" data-value="2" aria-label="2">★</button>
+            <button type="button" class="on" data-value="3" aria-label="3">★</button>
+            <button type="button" class="on" data-value="4" aria-label="4">★</button>
+            <button type="button" data-value="5" aria-label="5">★</button>
+          </div>
+        </article>
+
+        <article class="panel item" data-book-id="3">
+          <div class="cover g3">1984</div>
+          <div>
+            <h3>1984</h3>
+            <p class="by">Джордж Оруэлл</p>
+          </div>
+          <div class="rate-input" data-js="rate">
+            <button type="button" class="on" data-value="1" aria-label="1">★</button>
+            <button type="button" class="on" data-value="2" aria-label="2">★</button>
+            <button type="button" class="on" data-value="3" aria-label="3">★</button>
+            <button type="button" class="on" data-value="4" aria-label="4">★</button>
+            <button type="button" data-value="5" aria-label="5">★</button>
+          </div>
+        </article>
+
+        <article class="panel item" data-book-id="5">
+          <div class="cover g5">Хоббит</div>
+          <div>
+            <h3>Хоббит</h3>
+            <p class="by">Дж. Р. Р. Толкин</p>
+          </div>
+          <div class="rate-input" data-js="rate">
+            <button type="button" data-value="1" aria-label="1">★</button>
+            <button type="button" data-value="2" aria-label="2">★</button>
+            <button type="button" data-value="3" aria-label="3">★</button>
+            <button type="button" data-value="4" aria-label="4">★</button>
+            <button type="button" data-value="5" aria-label="5">★</button>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="mt-l">
+        Хотите новые идеи? <a href="recommendations.html"><b>Посмотреть рекомендации</b></a>
+      </p>
+
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer>
+    <div class="wrap">
+      <span>Книжный Вайб — читаем медленно, выбираем быстро</span>
+      <span>
+        <a href="catalog.html">Каталог</a> · 
+        <a href="collections.html">Подборки</a> · 
+        <a href="cart.html">Корзина</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

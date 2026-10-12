@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Рекомендации — Книжный Вайб</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@500;700&display=swap&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Хедер -->
+  <header class="top">
+    <div class="wrap">
+      <div class="bar">
+        <a class="logo" href="index.html">Книжный Вайб</a>
+
+        <nav aria-label="Основное меню">
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="genres.html">Жанры</a></li>
+            <li><a href="authors.html">Авторы</a></li>
+            <li><a href="reviews.html">Рецензии</a></li>
+            <li><a href="collections.html">Подборки</a></li>
+            <li><a href="recommendations.html" aria-current="page">Рекомендации</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="bar2">
+        <form class="search" role="search" action="catalog.html" method="get" data-js="search-form">
+          <svg class="ico-s mag" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-3.5-3.5"/>
+          </svg>
+          <input type="search" name="q" placeholder="Название, автор, жанр" aria-label="Поиск по магазину" data-js="search" autocomplete="off">
+          <span class="key" aria-hidden="true">/</span>
+          <div data-js="search-suggest" hidden></div>
+        </form>
+
+        <a class="act" href="shelf.html">
+          <svg class="ico-s" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="4" height="16" rx="1"/>
+            <rect x="10" y="4" width="4" height="16" rx="1"/>
+            <path d="m16 6 4 13"/>
+          </svg>
+          <span class="lbl">Моя полка</span>
+          <span class="badge" data-js="shelf-count">0</span>
+        </a>
+
+        <a class="act main" href="cart.html">
+          <svg class="ico-s" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8Z"/>
+            <path d="M9 8a3 3 0 0 1 6 0"/>
+          </svg>
+          <span class="lbl">Корзина</span>
+          <span class="badge" data-js="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Основной контент -->
+  <main>
+    <div class="wrap">
+      
+      <div class="head">
+        <h1>Что почитать дальше</h1>
+      </div>
+
+      <!-- Панель выбора прочитанного -->
+      <div class="panel">
+        <h3>Вы прочитали</h3>
+        <p>Отметьте книги, и подборка подстроится под ваши жанры и оценки.</p>
+        
+        <div class="chips mt-m" data-js="read-chosen">
+          <button class="chip on" data-book-id="2">Дюна</button>
+          <button class="chip" data-book-id="3">1984</button>
+          <button class="chip" data-book-id="5">Хоббит</button>
+          <button class="chip" data-book-id="1">Мастер и Маргарита</button>
+        </div>
+      </div>
+
+      <!-- Секция персональных рекомендаций -->
+      <section class="section">
+        <div class="head">
+          <h2>Вам понравится</h2>
+        </div>
+
+        <div class="grid" data-js="recs-list">
+          <article class="card" data-book-id="3" data-genre="dystopia" data-rating="4.6" data-price="450" data-author="Джордж Оруэлл">
+            <a class="cover g3" href="book.html">1984</a>
+            <div>
+              <h3><a href="book.html">1984</a></h3>
+              <p class="by">Джордж Оруэлл</p>
+            </div>
+            <div class="row">
+              <span class="stars" style="--r:4.6" aria-label="Рейтинг 4.6 из 5"></span>
+              <b>450 ₽</b>
+            </div>
+            <div class="acts">
+              <button class="btn sm" data-js="add-to-cart">В корзину</button>
+              <button class="btn sm ghost" data-js="mark-read">Прочитано</button>
+            </div>
+          </article>
+
+          <article class="card" data-book-id="4" data-genre="classic" data-rating="4.7" data-price="520" data-author="Фёдор Достоевский">
+            <a class="cover g4" href="book.html">Преступление и наказание</a>
+            <div>
+              <h3><a href="book.html">Преступление и наказание</a></h3>
+              <p class="by">Фёдор Достоевский</p>
+            </div>
+            <div class="row">
+              <span class="stars" style="--r:4.7" aria-label="Рейтинг 4.7 из 5"></span>
+              <b>520 ₽</b>
+            </div>
+            <div class="acts">
+              <button class="btn sm" data-js="add-to-cart">В корзину</button>
+              <button class="btn sm ghost" data-js="mark-read">Прочитано</button>
+            </div>
+          </article>
+
+          <article class="card" data-book-id="5" data-genre="fantasy" data-rating="4.8" data-price="640" data-author="Дж. Р. Р. Толкин">
+            <a class="cover g5" href="book.html">Хоббит</a>
+            <div>
+              <h3><a href="book.html">Хоббит</a></h3>
+              <p class="by">Дж. Р. Р. Толкин</p>
+            </div>
+            <div class="row">
+              <span class="stars" style="--r:4.8" aria-label="Рейтинг 4.8 из 5"></span>
+              <b>640 ₽</b>
+            </div>
+            <div class="acts">
+              <button class="btn sm" data-js="add-to-cart">В корзину</button>
+              <button class="btn sm ghost" data-js="mark-read">Прочитано</button>
+            </div>
+          </article>
+
+          <article class="card" data-book-id="6" data-genre="nonfiction" data-rating="4.5" data-price="690" data-author="Юваль Ной Харари">
+            <a class="cover g6" href="book.html">Sapiens</a>
+            <div>
+              <h3><a href="book.html">Sapiens</a></h3>
+              <p class="by">Юваль Ной Харари</p>
+            </div>
+            <div class="row">
+              <span class="stars" style="--r:4.5" aria-label="Рейтинг 4.5 из 5"></span>
+              <b>690 ₽</b>
+            </div>
+            <div class="acts">
+              <button class="btn sm" data-js="add-to-cart">В корзину</button>
+              <button class="btn sm ghost" data-js="mark-read">Прочитано</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer>
+    <div class="wrap">
+      <span>Книжный Вайб — читаем медленно, выбираем быстро</span>
+      <span>
+        <a href="catalog.html">Каталог</a> · 
+        <a href="collections.html">Подборки</a> · 
+        <a href="cart.html">Корзина</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

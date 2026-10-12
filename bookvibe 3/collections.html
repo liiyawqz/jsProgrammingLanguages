@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подборки — Книжный Вайб</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@500;700&display=swap&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Хедер -->
+  <header class="top">
+    <div class="wrap">
+      <div class="bar">
+        <a class="logo" href="index.html">Книжный Вайб</a>
+
+        <nav aria-label="Основное меню">
+          <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="catalog.html">Каталог</a></li>
+            <li><a href="genres.html">Жанры</a></li>
+            <li><a href="authors.html">Авторы</a></li>
+            <li><a href="reviews.html">Рецензии</a></li>
+            <li><a href="collections.html" aria-current="page">Подборки</a></li>
+            <li><a href="recommendations.html">Рекомендации</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="bar2">
+        <form class="search" role="search" action="catalog.html" method="get" data-js="search-form">
+          <svg class="ico-s mag" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-3.5-3.5"/>
+          </svg>
+          <input type="search" name="q" placeholder="Название, автор, жанр" aria-label="Поиск по магазину" data-js="search" autocomplete="off">
+          <span class="key" aria-hidden="true">/</span>
+          <div data-js="search-suggest" hidden></div>
+        </form>
+
+        <a class="act" href="shelf.html">
+          <svg class="ico-s" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="4" y="4" width="4" height="16" rx="1"/>
+            <rect x="10" y="4" width="4" height="16" rx="1"/>
+            <path d="m16 6 4 13"/>
+          </svg>
+          <span class="lbl">Моя полка</span>
+          <span class="badge" data-js="shelf-count">0</span>
+        </a>
+
+        <a class="act main" href="cart.html">
+          <svg class="ico-s" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 8h14l-1 12H6L5 8Z"/>
+            <path d="M9 8a3 3 0 0 1 6 0"/>
+          </svg>
+          <span class="lbl">Корзина</span>
+          <span class="badge" data-js="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Основной контент -->
+  <main>
+    <div class="wrap">
+      
+      <div class="head">
+        <h1>Подборки</h1>
+      </div>
+
+      <div class="grid c3">
+        <a class="tile g4" href="catalog.html?collection=rain" data-collection="rain">
+          <h3>Дождливый вторник</h3>
+          <p>Уютные книги под плед</p>
+        </a>
+
+        <a class="tile g3" href="catalog.html?collection=dystopia" data-collection="dystopia">
+          <h3>Антиутопии без сна</h3>
+          <p>Страшно похоже на правду</p>
+        </a>
+
+        <a class="tile g6" href="catalog.html?collection=weekend" data-collection="weekend">
+          <h3>За выходные</h3>
+          <p>Короткие и быстрые</p>
+        </a>
+
+        <a class="tile g1" href="catalog.html?collection=classic" data-collection="classic">
+          <h3>Классика без скуки</h3>
+          <p>С чего начать знакомство</p>
+        </a>
+
+        <a class="tile g5" href="catalog.html?collection=fantasy" data-collection="fantasy">
+          <h3>Фэнтези для начала</h3>
+          <p>Миры, в которые легко войти</p>
+        </a>
+
+        <a class="tile g7" href="catalog.html?collection=smart" data-collection="smart">
+          <h3>Умно и увлекательно</h3>
+          <p>Нон-фикшн, который читается как роман</p>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Футер -->
+  <footer>
+    <div class="wrap">
+      <span>Книжный Вайб — читаем медленно, выбираем быстро</span>
+      <span>
+        <a href="catalog.html">Каталог</a> · 
+        <a href="collections.html">Подборки</a> · 
+        <a href="cart.html">Корзина</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
