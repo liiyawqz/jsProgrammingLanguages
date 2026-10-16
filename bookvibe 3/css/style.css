@@ -667,3 +667,202 @@
       flex-basis: auto;
     }
   }
+  /* Ограничиваем ссылку-обёртку */
+.card > a {
+  display: block;
+  width: 100%;
+}
+
+/* Настраиваем сам тег картинки */
+.cover {
+  width: 100%;
+  height: 100%;
+  max-height: 400px; /* Укажите желаемую максимальную высоту карточки, если нужно */
+  object-fit: cover; /* Сохраняет пропорции и красиво заполняет область */
+  display: block;
+  border-radius: 8px; /* Скругление углов, если предусмотрено дизайном */
+}
+
+/* Убираем фон, рамки и ограничиваем размеры для картинок-обложек */
+.cover {
+  background: none !important;        /* Убирает плашечный цвет фона */
+  background-color: transparent !important;
+  border: none !important;            /* Убирает цветную рамку */
+  box-shadow: none;                   /* Убирает лишние тени, если они есть */
+  
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;                /* Пропорция книжной обложки */
+  object-fit: cover;                  /* Подгоняет картинку без искажений */
+  display: block;
+}
+
+/* Очищаем стили фонов у классов-модификаторов (g1, g2, g3...), если они задавали цвета */
+.cover.g1,
+.cover.g2,
+.cover.g3,
+.cover.g4,
+.cover.g5,
+.cover.g6,
+.cover.g7,
+.cover.g8 {
+  background: none !important;
+  border: none !important;
+}
+
+/* Ограничиваем ссылку, в которой лежит обложка */
+.card > a {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px; /* Необязательно: аккуратные скругления углов */
+}
+
+/* Убираем фоны, границы и тени у карточек в стопке hero-секции */
+.hero .stack .cover {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Настраиваем саму картинку img внутри .stack */
+.hero .stack img.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px; /* Оставьте или уберите радиус скругления по вкусу */
+} 
+/* Карточка подборки */
+.tile {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 180px; /* Высота карточки как на макете */
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 20px;
+  background: none !important; /* Убирает прежний цветной фон g3, g4, g6 */
+}
+
+/* Картинка на фоне карточки */
+.tile-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Контент с текстом поверх картинки */
+.tile-content {
+  position: relative;
+  z-index: 3;
+}
+
+.tile-content h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.tile-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 100%);
+  z-index: 2;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Делает изображение идеально круглым */
+  object-fit: cover;   /* Сохраняет пропорции фото без искажений */
+  display: block;
+  margin: 0 auto 12px; /* Центрирует картинку по горизонтали */
+}
+
+.tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius, 16px);
+  min-height: 180px;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.tile-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.6); /* Затемнение фона, чтобы светлый текст отлично читался */
+  transition: transform 0.3s ease;
+}
+
+.tile:hover .tile-bg {
+  transform: scale(1.05); /* Легкий зум при наведении */
+}
+
+.tile-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* 1. Делаем саму картинку ярче */
+.tile-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  
+  /* Было, скорее всего, 0.6 или 0.4.
+     Ставим 0.85 — картинка станет намного ярче и сочнее: */
+  filter: brightness(0.85); 
+  
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* При наведении можно делать еще немного ярче */
+.tile:hover .tile-bg {
+  filter: brightness(0.95);
+  transform: scale(1.04);
+}
+
+/* 2. Если на самой карточке или на фоне есть темный оверлей, 
+   используем мягкий затемняющий градиент СНИЗУ под текстом, 
+   чтобы картинка оставалась светлой, а белый текст легко читался: */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Градиент затемняет только самую нижнюю часть плитки под текстом */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.65) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.tile-content {
+  position: relative;
+  z-index: 2; /* Текст поверх градиента */
+}
