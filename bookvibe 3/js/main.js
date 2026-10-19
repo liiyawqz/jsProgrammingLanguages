@@ -26,23 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   
       fioInput?.addEventListener('input', () => {
-        validateInput(fioInput, regexFIO, document.getElementById('fio-error'), 'Введите корректное ФИО!!!');
+        validateInput(fioInput, regexFIO, document.getElementById('fio-error'), 'Введите корректное ФИО');
       });
   
       phoneInput?.addEventListener('input', () => {
-        validateInput(phoneInput, regexPhone, document.getElementById('phone-error'), 'Введите корректный номер телефона!!!');
+        validateInput(phoneInput, regexPhone, document.getElementById('phone-error'), 'Введите корректный номер телефона');
       });
   
       emailInput?.addEventListener('input', () => {
-        validateInput(emailInput, regexEmail, document.getElementById('email-error'), 'Введите корректный email!!!');
+        validateInput(emailInput, regexEmail, document.getElementById('email-error'), 'Введите корректный email');
       });
   
       orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
   
-        const isFioValid = validateInput(fioInput, regexFIO, document.getElementById('fio-error'), 'Заполните ФИО');
-        const isPhoneValid = validateInput(phoneInput, regexPhone, document.getElementById('phone-error'), 'Заполните телефон');
-        const isEmailValid = validateInput(emailInput, regexEmail, document.getElementById('email-error'), 'Заполните email');
+        const isFioValid = validateInput(fioInput, regexFIO, document.getElementById('fio-error'), 'Заполните правильно ФИО!!!');
+        const isPhoneValid = validateInput(phoneInput, regexPhone, document.getElementById('phone-error'), 'Заполните правильно телефон!!!');
+        const isEmailValid = validateInput(emailInput, regexEmail, document.getElementById('email-error'), 'Заполните правильно email!!');
   
         if (isFioValid && isPhoneValid && isEmailValid) {
           alert('Заказ успешно оформлен! Спасибо за покупку.');
