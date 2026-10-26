@@ -64,16 +64,16 @@
   <!-- Основной контент -->
   <main>
     <div class="wrap">
-      
+
       <!-- Первый экран (Hero) -->
       <section class="hero">
         <div>
           <h1>Книги для вечеров, которые хочется растянуть</h1>
           <p>Классика, фантастика и детективы с честными рецензиями. Отмечайте прочитанное, а мы подберём, что читать дальше.</p>
-          
-          <a class="btn" href="catalog.html">Открыть каталог</a> 
+
+          <a class="btn" href="catalog.html">Открыть каталог</a>
           <a class="btn ghost" href="recommendations.html">Что мне почитать</a>
-          
+
           <div class="chips">
             <a class="chip" href="catalog.html?genre=classic">Классика</a>
             <a class="chip" href="catalog.html?genre=scifi">Фантастика</a>
@@ -84,10 +84,11 @@
           </div>
         </div>
 
+        <!-- Стопка обложек: картинки напрямую внутри .stack -->
         <div class="stack" aria-hidden="true">
           <img class="cover g1" src="images/i.webp" alt="Мастер и Маргарита">
           <img class="cover g2" src="images/i-2.webp" alt="Дюна">
-          <img class="cover g5" src="images/i-3.webp" alt="Хоббит">
+          <img class="cover g5" src="images/TheHobbitt_AUJ.webp" alt="Хоббит">
         </div>
       </section>
 
@@ -100,16 +101,16 @@
 
         <div class="grid" data-js="book-grid">
           <article class="card" data-book-id="1" data-genre="classic" data-rating="4.8" data-price="590" data-author="Михаил Булгаков">
-            <a href="book.html">
+            <a href="book.html?id=1">
               <img class="cover g1" src="images/i.webp" alt="Обложка книги Мастер и Маргарита">
             </a>
             <div>
-              <h3><a href="book.html">Мастер и Маргарита</a></h3>
+              <h3><a href="book.html?id=1">Мастер и Маргарита</a></h3>
               <p class="by">Михаил Булгаков</p>
             </div>
             <div class="row">
               <span class="stars" style="--r:4.8" aria-label="Рейтинг 4.8 из 5"></span>
-              <b>590 ₽</b>
+              <b>590 сом</b>
             </div>
             <div class="acts">
               <button class="btn sm" data-js="add-to-cart">В корзину</button>
@@ -118,16 +119,16 @@
           </article>
 
           <article class="card" data-book-id="2" data-genre="scifi" data-rating="4.7" data-price="720" data-author="Фрэнк Герберт">
-            <a href="book.html">
+            <a href="book.html?id=2">
               <img class="cover g2" src="images/i-2.webp" alt="Обложка книги Дюна">
             </a>
             <div>
-              <h3><a href="book.html">Дюна</a></h3>
+              <h3><a href="book.html?id=2">Дюна</a></h3>
               <p class="by">Фрэнк Герберт</p>
             </div>
             <div class="row">
               <span class="stars" style="--r:4.7" aria-label="Рейтинг 4.7 из 5"></span>
-              <b>720 ₽</b>
+              <b>720 сом</b>
             </div>
             <div class="acts">
               <button class="btn sm" data-js="add-to-cart">В корзину</button>
@@ -136,16 +137,16 @@
           </article>
 
           <article class="card" data-book-id="3" data-genre="dystopia" data-rating="4.6" data-price="450" data-author="Джордж Оруэлл">
-            <a href="book.html">
+            <a href="book.html?id=3">
               <img class="cover g3" src="images/i-3.webp" alt="Обложка книги 1984">
             </a>
             <div>
-              <h3><a href="book.html">1984</a></h3>
+              <h3><a href="book.html?id=3">1984</a></h3>
               <p class="by">Джордж Оруэлл</p>
             </div>
             <div class="row">
               <span class="stars" style="--r:4.6" aria-label="Рейтинг 4.6 из 5"></span>
-              <b>450 ₽</b>
+              <b>450 сом</b>
             </div>
             <div class="acts">
               <button class="btn sm" data-js="add-to-cart">В корзину</button>
@@ -154,16 +155,16 @@
           </article>
 
           <article class="card" data-book-id="4" data-genre="classic" data-rating="4.7" data-price="520" data-author="Фёдор Достоевский">
-            <a href="book.html">
+            <a href="book.html?id=4">
               <img class="cover g4" src="images/i-4.webp" alt="Обложка книги Преступление и наказание">
             </a>
             <div>
-              <h3><a href="book.html">Преступление и наказание</a></h3>
+              <h3><a href="book.html?id=4">Преступление и наказание</a></h3>
               <p class="by">Фёдор Достоевский</p>
             </div>
             <div class="row">
               <span class="stars" style="--r:4.7" aria-label="Рейтинг 4.7 из 5"></span>
-              <b>520 ₽</b>
+              <b>520 сом</b>
             </div>
             <div class="acts">
               <button class="btn sm" data-js="add-to-cart">В корзину</button>
@@ -172,39 +173,40 @@
           </article>
         </div>
       </section>
-<!-- Подборки недели -->
-<section class="section">
-  <div class="head">
-    <h2>Подборки недели</h2>
-    <a href="collections.html">Все подборки</a>
-  </div>
 
-  <div class="grid c3">
-    <a class="tile" href="collections.html">
-      <img class="tile-bg" src="images/rainy.jpg" alt="Дождливый вторник">
-      <div class="tile-content">
-        <h3>Дождливый вторник</h3>
-        <p>Уютные книги под плед</p>
-      </div>
-    </a>
+      <!-- Подборки недели -->
+      <section class="section">
+        <div class="head">
+          <h2>Подборки недели</h2>
+          <a href="collections.html">Все подборки</a>
+        </div>
 
-    <a class="tile" href="collections.html">
-      <img class="tile-bg" src="images/antiutopiya.webp" alt="Антиутопии без сна">
-      <div class="tile-content">
-        <h3>Антиутопии без сна</h3>
-        <p>Страшно похоже на правду</p>
-      </div>
-    </a>
+        <div class="grid c3">
+          <a class="tile" href="collections.html">
+            <img class="tile-bg" src="images/rainy.jpg" alt="Дождливый вторник">
+            <div class="tile-content">
+              <h3>Дождливый вторник</h3>
+              <p>Уютные книги под плед</p>
+            </div>
+          </a>
 
-    <a class="tile" href="collections.html">
-      <img class="tile-bg" src="images/cozy.jpg" alt="За выходные">
-      <div class="tile-content">
-        <h3>За выходные</h3>
-        <p>Короткие и быстрые</p>
-      </div>
-    </a>
-  </div>
-</section>
+          <a class="tile" href="collections.html">
+            <img class="tile-bg" src="images/antiutopiya.webp" alt="Антиутопии без сна">
+            <div class="tile-content">
+              <h3>Антиутопии без сна</h3>
+              <p>Страшно похоже на правду</p>
+            </div>
+          </a>
+
+          <a class="tile" href="collections.html">
+            <img class="tile-bg" src="images/cozy.jpg" alt="За выходные">
+            <div class="tile-content">
+              <h3>За выходные</h3>
+              <p>Короткие и быстрые</p>
+            </div>
+          </a>
+        </div>
+      </section>
 
       <!-- Вам может понравиться -->
       <section class="section">
@@ -215,16 +217,16 @@
 
         <div class="grid" data-js="recs-list">
           <article class="card" data-book-id="5" data-genre="fantasy" data-rating="4.8" data-price="640" data-author="Дж. Р. Р. Толкин">
-            <a href="book.html">
+            <a href="book.html?id=5">
               <img class="cover g5" src="images/TheHobbitt_AUJ.webp" alt="Обложка книги Хоббит">
             </a>
             <div>
-              <h3><a href="book.html">Хоббит</a></h3>
+              <h3><a href="book.html?id=5">Хоббит</a></h3>
               <p class="by">Дж. Р. Р. Толкин</p>
             </div>
             <div class="row">
               <span class="stars" style="--r:4.8" aria-label="Рейтинг 4.8 из 5"></span>
-              <b>640 ₽</b>
+              <b>640 сом</b>
             </div>
             <div class="acts">
               <button class="btn sm" data-js="add-to-cart">В корзину</button>
@@ -233,16 +235,16 @@
           </article>
 
           <article class="card" data-book-id="6" data-genre="nonfiction" data-rating="4.5" data-price="690" data-author="Юваль Ной Харари">
-            <a href="book.html">
+            <a href="book.html?id=6">
               <img class="cover g6" src="images/img1.jpg" alt="Обложка книги Sapiens">
             </a>
             <div>
-              <h3><a href="book.html">Sapiens</a></h3>
+              <h3><a href="book.html?id=6">Sapiens</a></h3>
               <p class="by">Юваль Ной Харари</p>
             </div>
             <div class="row">
               <span class="stars" style="--r:4.5" aria-label="Рейтинг 4.5 из 5"></span>
-              <b>690 ₽</b>
+              <b>690 сом</b>
             </div>
             <div class="acts">
               <button class="btn sm" data-js="add-to-cart">В корзину</button>
@@ -251,16 +253,16 @@
           </article>
 
           <article class="card" data-book-id="7" data-genre="detective" data-rating="4.6" data-price="380" data-author="Агата Кристи">
-            <a href="book.html">
+            <a href="book.html?id=7">
               <img class="cover g7" src="images/i740080.jpg" alt="Обложка книги Убийство в Восточном экспрессе">
             </a>
             <div>
-              <h3><a href="book.html">Убийство в Восточном экспрессе</a></h3>
+              <h3><a href="book.html?id=7">Убийство в Восточном экспрессе</a></h3>
               <p class="by">Агата Кристи</p>
             </div>
             <div class="row">
               <span class="stars" style="--r:4.6" aria-label="Рейтинг 4.6 из 5"></span>
-              <b>380 ₽</b>
+              <b>380 сом</b>
             </div>
             <div class="acts">
               <button class="btn sm" data-js="add-to-cart">В корзину</button>
@@ -269,16 +271,16 @@
           </article>
 
           <article class="card" data-book-id="8" data-genre="classic" data-rating="4.3" data-price="410" data-author="Дж. Д. Сэлинджер">
-            <a href="book.html">
+            <a href="book.html?id=8">
               <img class="cover g8" src="images/img3.jpg" alt="Обложка книги Над пропастью во ржи">
             </a>
             <div>
-              <h3><a href="book.html">Над пропастью во ржи</a></h3>
+              <h3><a href="book.html?id=8">Над пропастью во ржи</a></h3>
               <p class="by">Дж. Д. Сэлинджер</p>
             </div>
             <div class="row">
               <span class="stars" style="--r:4.3" aria-label="Рейтинг 4.3 из 5"></span>
-              <b>410 ₽</b>
+              <b>410 сом</b>
             </div>
             <div class="acts">
               <button class="btn sm" data-js="add-to-cart">В корзину</button>
@@ -296,8 +298,8 @@
     <div class="wrap">
       <span>Книжный Вайб — читаем медленно, выбираем быстро</span>
       <span>
-        <a href="catalog.html">Каталог</a> · 
-        <a href="collections.html">Подборки</a> · 
+        <a href="catalog.html">Каталог</a> ·
+        <a href="collections.html">Подборки</a> ·
         <a href="cart.html">Корзина</a>
       </span>
     </div>

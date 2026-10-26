@@ -1,36 +1,37 @@
+
+
    * {
     box-sizing: border-box;
     margin: 0;
   }
   
   :root {
-    /* Палитра цветов */
+    /* Палитра */
     --bg: #120d2b;
     --panel: rgba(255, 255, 255, 0.07);
     --line: rgba(255, 255, 255, 0.14);
-    
+  
     /* Текст */
     --tx: #f6f0ff;
     --mu: #b3a8d9;
-    
-    /* Акцентные цвета */
+  
+    /* Акценты */
     --peach: #ff9a6b;
     --pink: #ff4f9a;
     --ind: #6c5cff;
     --mint: #7dffd6;
     --gold: #ffd166;
-    
-    /* Радиусы */
+  
+    /* Радиус */
     --r: 16px;
   }
   
-  /* 2. БАЗОВЫЕ СТИЛИ И ТИПОГРАФИКА */
   
   body {
     font: 16px/1.6 Manrope, system-ui, sans-serif;
     color: var(--tx);
     min-height: 100vh;
-    background: 
+    background:
       radial-gradient(900px 500px at 85% -5%, rgba(255, 79, 154, 0.35), transparent),
       radial-gradient(800px 600px at -10% 30%, rgba(108, 92, 255, 0.4), transparent),
       radial-gradient(700px 500px at 60% 110%, rgba(255, 154, 107, 0.25), transparent),
@@ -68,7 +69,7 @@
     padding: 0 24px;
   }
   
-  /* Утилиты отступов и видимости */
+  /* Утилиты */
   .lead { margin-top: 16px; max-width: 60ch; }
   .mt-s { margin-top: 12px; }
   .mt-m { margin-top: 16px; }
@@ -78,7 +79,6 @@
     display: none !important;
   }
   
-  /* 3. ВЕРХНЯЯ ПАНЕЛЬ И НАВИГАЦИЯ (HEADER) */
   
   .top {
     position: sticky;
@@ -181,7 +181,7 @@
     padding: 8px;
   }
   
-  /* Кнопки действий (Полка, Корзина) */
+  /* Кнопки «Полка» и «Корзина» */
   .act {
     display: flex;
     align-items: center;
@@ -225,7 +225,6 @@
     stroke-linejoin: round;
   }
   
-  /* 4. ОСНОВНЫЕ КОМПОНЕНТЫ И ЭЛЕМЕНТЫ ФОРМ */
   
   main {
     padding: 40px 0 72px;
@@ -273,9 +272,13 @@
   
   .btn:hover { filter: brightness(1.15); }
   .btn.ghost { background: var(--panel); border: 1px solid var(--line); }
-  .btn.sm { padding: 7px 14px; font-size: 14px; }
+  .btn.sm {
+    padding: 10px 16px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
   
-  /* Теги / Фильтры (Chips) */
+  /* Чипы */
   .chips {
     display: flex;
     flex-wrap: wrap;
@@ -306,7 +309,6 @@
   
   .panel p { margin-top: 8px; }
   
-  /* Табы */
   .tabs {
     display: flex;
     gap: 8px;
@@ -319,8 +321,6 @@
     flex-direction: column;
     gap: 14px;
   }
-  
-  /* 5. ПЕРВЫЙ ЭКРАН (HERO SECTION) */
   
   .hero {
     display: grid;
@@ -345,17 +345,19 @@
   
   .hero .chips { margin-top: 28px; }
   
-  /* Стопка книг (Stack Animation) */
+  /* Стопка обложек */
   .stack {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0;
     padding: 20px 0;
   }
   
-  .stack .cover {
+  .stack img.cover {
     width: 36%;
     margin: 0 -3%;
+    object-fit: cover;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     animation: float 7s ease-in-out infinite;
   }
@@ -375,12 +377,12 @@
     }
   }
   
-  /* 6. КАРТОЧКИ КНИГ И СЕТКИ (GRID & CARDS) */
   
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 24px;
+    align-items: stretch;
   }
   
   .grid.c3 {
@@ -393,12 +395,24 @@
     gap: 12px;
   }
   
+  .card > a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  
   .card h3 a:hover { color: var(--peach); }
   .by { font-size: 14px; }
   
-  /* Обложки книг */
+  .card .acts {
+    margin-top: auto;      /* кнопки всегда внизу карточки */
+    flex-wrap: wrap;
+  }
+  
+  /* Обложка-блок (с градиентом и текстом) */
   .cover {
-    aspect-ratio: 2/3;
+    aspect-ratio: 2 / 3;
     border-radius: 12px;
     display: flex;
     align-items: flex-end;
@@ -420,7 +434,29 @@
   
   a.cover:hover { filter: brightness(1.12); }
   
-  /* Градиенты обложек */
+  /* Обложка-картинка: показывается целиком, без плашки */
+  img.cover {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: contain;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 12px;
+  }
+  
+  .card img.cover {
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover img.cover {
+    transform: scale(1.04);
+  }
+  
+  /* Градиенты обложек (для блоков без картинки) */
   .g1 { background: linear-gradient(160deg, #ff4f9a, #2a0a4a); }
   .g2 { background: linear-gradient(160deg, #ffb36b, #b33a00); }
   .g3 { background: linear-gradient(160deg, #3a3a3a, #c4161c); }
@@ -457,33 +493,77 @@
     gap: 8px;
   }
   
-  /*7. СПЕЦИФИЧЕСКИЕ СЕКЦИИ И СТРАНИЦЫ */
   
   /* Плитки подборок */
   .tile {
-    min-height: 190px;
-    border-radius: var(--r);
-    padding: 24px;
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 6px;
+    min-height: 180px;
+    padding: 20px;
+    border-radius: var(--r);
     color: #fff;
     transition: transform 0.2s;
   }
   
   .tile:hover { transform: translateY(-4px); }
-  .tile p { color: rgba(255, 255, 255, 0.85); }
   
-  /* Аватар автора */
+  .tile-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(0.85);
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+  
+  .tile:hover .tile-bg {
+    filter: brightness(0.95);
+    transform: scale(1.04);
+  }
+  
+  /* Затемнение только снизу, под текстом */
+  .tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.65) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .tile-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .tile-content h3 {
+    margin: 0 0 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  
+  .tile-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  
+  /* Аватар автора (картинка или инициалы) */
   .avatar {
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
+    object-fit: cover;
     display: grid;
     place-items: center;
     font: 700 22px Unbounded, sans-serif;
-    margin-bottom: 14px;
+    margin: 0 auto 12px;
   }
   
   .ico {
@@ -492,7 +572,7 @@
     margin-bottom: 10px;
   }
   
-  /* Сетка с боковой панелью (Каталог) */
+  /* Каталог: боковая панель + список */
   .layout {
     display: grid;
     grid-template-columns: 260px 1fr;
@@ -542,19 +622,23 @@
     color: var(--mu);
   }
   
-  /* Детальная страница книги */
+  /* Страница книги */
   .book {
     display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 48px;
+    grid-template-columns: minmax(200px, 320px) 1fr;
+    gap: 32px;
     align-items: start;
   }
   
-  .book .cover { font-size: 26px; }
+  .book img.cover {
+    max-width: 320px;
+  }
+  
   .price { font: 700 28px Unbounded, sans-serif; }
   
   /* Ввод рейтинга */
   .rate-input { display: flex; gap: 4px; }
+  
   .rate-input button {
     background: none;
     border: 0;
@@ -582,12 +666,10 @@
     align-items: center;
   }
   
-  .item .cover {
-    font-size: 10px;
-    padding: 6px;
-  }
+  .item .cover { font-size: 10px; }
+  .item div.cover { padding: 6px; }
   
-  /* Таблицы (Корзина) */
+  /* Таблицы (корзина) */
   .table {
     width: 100%;
     border-collapse: collapse;
@@ -602,7 +684,7 @@
   
   .table input { width: 64px; }
   
-  /* Двухколоночный макет (Корзина/Рецензии) */
+  /* Две колонки (корзина, рецензии) */
   .two {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -610,9 +692,6 @@
     align-items: start;
   }
   
-  /* ==========================================================================
-     8. ПОДВАЛ (FOOTER)
-     ========================================================================== */
   
   footer {
     border-top: 1px solid var(--line);
@@ -627,7 +706,6 @@
     flex-wrap: wrap;
   }
   
-
   
   @media (max-width: 860px) {
     .hero,
@@ -636,19 +714,24 @@
     .layout {
       grid-template-columns: 1fr;
     }
-    
+  
+    .book img.cover {
+      max-width: 240px;
+      margin: 0 auto;
+    }
+  
     .filters {
       position: static;
     }
-    
+  
     .bar2 {
       flex-wrap: wrap;
     }
-    
+  
     .search {
       flex-basis: 100%;
     }
-    
+  
     .key {
       display: none;
     }
@@ -658,211 +741,19 @@
     .act .lbl {
       display: none;
     }
-    
+  
     .act {
       padding: 11px 14px;
     }
-    
+  
     .search {
       flex-basis: auto;
     }
   }
-  /* Ограничиваем ссылку-обёртку */
-.card > a {
-  display: block;
-  width: 100%;
-}
 
-/* Настраиваем сам тег картинки */
-.cover {
-  width: 100%;
-  height: 100%;
-  max-height: 400px; /* Укажите желаемую максимальную высоту карточки, если нужно */
-  object-fit: cover; /* Сохраняет пропорции и красиво заполняет область */
-  display: block;
-  border-radius: 8px; /* Скругление углов, если предусмотрено дизайном */
-}
-
-/* Убираем фон, рамки и ограничиваем размеры для картинок-обложек */
-.cover {
-  background: none !important;        /* Убирает плашечный цвет фона */
-  background-color: transparent !important;
-  border: none !important;            /* Убирает цветную рамку */
-  box-shadow: none;                   /* Убирает лишние тени, если они есть */
+  .hero .stack {
+    align-self: start;      
+    margin-top: 100px;     
+    padding-top: 0;
+  }
   
-  width: 100%;
-  height: auto;
-  aspect-ratio: 2 / 3;                /* Пропорция книжной обложки */
-  object-fit: cover;                  /* Подгоняет картинку без искажений */
-  display: block;
-}
-
-/* Очищаем стили фонов у классов-модификаторов (g1, g2, g3...), если они задавали цвета */
-.cover.g1,
-.cover.g2,
-.cover.g3,
-.cover.g4,
-.cover.g5,
-.cover.g6,
-.cover.g7,
-.cover.g8 {
-  background: none !important;
-  border: none !important;
-}
-
-/* Ограничиваем ссылку, в которой лежит обложка */
-.card > a {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 8px; /* Необязательно: аккуратные скругления углов */
-}
-
-/* Убираем фоны, границы и тени у карточек в стопке hero-секции */
-.hero .stack .cover {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-}
-
-/* Настраиваем саму картинку img внутри .stack */
-.hero .stack img.cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 8px; /* Оставьте или уберите радиус скругления по вкусу */
-} 
-/* Карточка подборки */
-.tile {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  min-height: 180px; /* Высота карточки как на макете */
-  border-radius: 16px;
-  overflow: hidden;
-  text-decoration: none;
-  color: #ffffff;
-  padding: 20px;
-  background: none !important; /* Убирает прежний цветной фон g3, g4, g6 */
-}
-
-/* Картинка на фоне карточки */
-.tile-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-/* Контент с текстом поверх картинки */
-.tile-content {
-  position: relative;
-  z-index: 3;
-}
-
-.tile-content h3 {
-  margin: 0 0 6px 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.tile-content p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 100%);
-  z-index: 2;
-}
-
-.avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%; /* Делает изображение идеально круглым */
-  object-fit: cover;   /* Сохраняет пропорции фото без искажений */
-  display: block;
-  margin: 0 auto 12px; /* Центрирует картинку по горизонтали */
-}
-
-.tile {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius, 16px);
-  min-height: 180px;
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
-  text-decoration: none;
-  color: #fff;
-}
-
-.tile-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  filter: brightness(0.6); /* Затемнение фона, чтобы светлый текст отлично читался */
-  transition: transform 0.3s ease;
-}
-
-.tile:hover .tile-bg {
-  transform: scale(1.05); /* Легкий зум при наведении */
-}
-
-.tile-content {
-  position: relative;
-  z-index: 1;
-}
-
-/* 1. Делаем саму картинку ярче */
-.tile-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  
-  /* Было, скорее всего, 0.6 или 0.4.
-     Ставим 0.85 — картинка станет намного ярче и сочнее: */
-  filter: brightness(0.85); 
-  
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* При наведении можно делать еще немного ярче */
-.tile:hover .tile-bg {
-  filter: brightness(0.95);
-  transform: scale(1.04);
-}
-
-/* 2. Если на самой карточке или на фоне есть темный оверлей, 
-   используем мягкий затемняющий градиент СНИЗУ под текстом, 
-   чтобы картинка оставалась светлой, а белый текст легко читался: */
-.tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  /* Градиент затемняет только самую нижнюю часть плитки под текстом */
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.65) 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-.tile-content {
-  position: relative;
-  z-index: 2; /* Текст поверх градиента */
-}
