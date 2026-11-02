@@ -168,3 +168,117 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
     }
   });
+
+
+
+
+(function () {
+  'use strict';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function getRandomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  document.addEventListener('mouseover', function (e) {
+    const card = e.target.closest('.card');
+    if (card && !card.contains(e.relatedTarget)) {
+      card.classList.add('is-hover');
+    }
+  });
+
+  document.addEventListener('mouseout', function (e) {
+    const card = e.target.closest('.card');
+    if (card && !card.contains(e.relatedTarget)) {
+      card.classList.remove('is-hover');
+    }
+  });
+
+  function flyToCart(button) {
+    const badge = document.querySelector('[data-js="cart-count"]');
+    if (!badge) return;
+
+    const from = button.getBoundingClientRect();
+    const to = badge.getBoundingClientRect();
+
+    if (!reduceMotion) {
+      const plus = document.createElement('div');
+      plus.classList.add('fly-plus');
+      plus.textContent = '+1';
+      plus.style.left = from.left + from.width / 2 - 14 + 'px';
+      plus.style.top = from.top + 'px';
+      document.body.appendChild(plus);
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          const dx = to.left - from.left - from.width / 2 + 14;
+          const dy = to.top - from.top;
+          plus.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(.4)';
+          plus.style.opacity = '0';
+        });
+      });
+
+      setTimeout(function () {
+        plus.remove();
+      }, 850);
+    }
+
+    setTimeout(function () {
+      badge.classList.add('bump');
+      setTimeout(function () {
+        badge.classList.remove('bump');
+      }, 400);
+    }, reduceMotion ? 0 : 700);
+  }
+
+  function starBurst(button) {
+    if (reduceMotion) return;
+    const rect = button.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    for (let i = 0; i < 8; i++) {
+      const star = document.createElement('span');
+      star.classList.add('star-burst');
+      star.textContent = '★';
+      star.style.left = cx + 'px';
+      star.style.top = cy + 'px';
+
+      const angle = (Math.PI * 2 * i) / 8;
+      const distance = getRandomNumber(40, 80);
+      star.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
+      star.style.setProperty('--dy', Math.sin(angle) * distance + 'px');
+
+      document.body.appendChild(star);
+      setTimeout(function () {
+        star.remove();
+      }, 700);
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    const addBtn = e.target.closest('[data-js="add-to-cart"]');
+    if (addBtn) flyToCart(addBtn);
+
+    const readBtn = e.target.closest('[data-js="mark-read"]');
+    if (readBtn) starBurst(readBtn);
+  });
+
+  const hero = document.querySelector('.hero');
+  const stack = document.querySelector('.stack');
+
+  if (hero && stack && !reduceMotion) {
+    hero.addEventListener('mousemove', function (e) {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5; 
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      stack.style.transform =
+        'translate(' + x * 24 + 'px, ' + y * 24 + 'px) rotate(' + x * 4 + 'deg)';
+    });
+
+    hero.addEventListener('mouseleave', function () {
+      stack.style.transform = '';
+    });
+  }
+})();
